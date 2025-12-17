@@ -1,10 +1,14 @@
 import { useState } from "react";
 import styles from "./App.module.css";
 import { Chat } from "./components/Chat/Chat";
-import {Controls} from "./components/Controls/Controls";
+import { Controls } from "./components/Controls/Controls";
 
 function App() {
-  const[messages,setMessages] = useState(MESSAGES);
+  const [messages, setMessages] = useState([]);
+
+  function handleContentSend(content) {
+    setMessages((prevMessages) => [...prevMessages, { content, role: "user" }]);
+  }
 
   return (
     <>
@@ -14,59 +18,12 @@ function App() {
           <h2 className={styles.Title}>AI chatbot</h2>
         </header>
         <div className={styles.ChatContainer}>
-          <Chat messages={messages}/>
+          <Chat messages={messages} />
         </div>
-        <Controls />
+        <Controls onSend={handleContentSend} />
       </div>
     </>
-  )
+  );
 }
 
-const MESSAGES = [
-  {
-    role : "user",
-    content : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem totam minus, molestiae repellat temporibus harum quia quidem repudiandae facere quis, numquam qui culpa impedit. Nihil corrupti eligendi quo architecto commodi?",
-  },
-  {
-    role : "assistant",
-    content : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem totam minus, molestiae repellat temporibus harum quia quidem repudiandae facere quis, numquam qui culpa impedit. Nihil corrupti eligendi quo architecto commodi?",
-  },
-  {
-    role : "user",
-    content : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem totam minus, molestiae repellat temporibus harum quia quidem repudiandae facere quis, numquam qui culpa impedit. Nihil corrupti eligendi quo architecto commodi?",
-  },
-  {
-    role : "assistant",
-    content : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem totam minus, molestiae repellat temporibus harum quia quidem repudiandae facere quis, numquam qui culpa impedit. Nihil corrupti eligendi quo architecto commodi?",
-  },{
-    role : "user",
-    content : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem totam minus, molestiae repellat temporibus harum quia quidem repudiandae facere quis, numquam qui culpa impedit. Nihil corrupti eligendi quo architecto commodi?",
-  },
-  {
-    role : "assistant",
-    content : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem totam minus, molestiae repellat temporibus harum quia quidem repudiandae facere quis, numquam qui culpa impedit. Nihil corrupti eligendi quo architecto commodi?",
-  },{
-    role : "user",
-    content : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem totam minus, molestiae repellat temporibus harum quia quidem repudiandae facere quis, numquam qui culpa impedit. Nihil corrupti eligendi quo architecto commodi?",
-  },
-  {
-    role : "assistant",
-    content : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem totam minus, molestiae repellat temporibus harum quia quidem repudiandae facere quis, numquam qui culpa impedit. Nihil corrupti eligendi quo architecto commodi?",
-  },{
-    role : "user",
-    content : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem totam minus, molestiae repellat temporibus harum quia quidem repudiandae facere quis, numquam qui culpa impedit. Nihil corrupti eligendi quo architecto commodi?",
-  },
-  {
-    role : "assistant",
-    content : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem totam minus, molestiae repellat temporibus harum quia quidem repudiandae facere quis, numquam qui culpa impedit. Nihil corrupti eligendi quo architecto commodi?",
-  },{
-    role : "user",
-    content : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem totam minus, molestiae repellat temporibus harum quia quidem repudiandae facere quis, numquam qui culpa impedit. Nihil corrupti eligendi quo architecto commodi?",
-  },
-  {
-    role : "assistant",
-    content : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem totam minus, molestiae repellat temporibus harum quia quidem repudiandae facere quis, numquam qui culpa impedit. Nihil corrupti eligendi quo architecto commodi?",
-  },
-]
-
-export default App
+export default App;
