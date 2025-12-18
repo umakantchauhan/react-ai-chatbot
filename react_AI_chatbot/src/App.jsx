@@ -2,7 +2,8 @@ import { useState } from "react";
 import styles from "./App.module.css";
 import { Chat } from "./components/Chat/Chat";
 import { Controls } from "./components/Controls/Controls";
-import { Assistant } from "./assistants/googleai";
+// import { Assistant } from "./assistants/googleai";
+import { Assistant } from "./assistants/openai";
 
 function App() {
   const assistant = new Assistant();
@@ -15,7 +16,7 @@ function App() {
   async function handleContentSend(content) {
     addMessage({ content, role: "user" });
     try {
-      const result = await assistant.chat(content);
+      const result = await assistant.chat(content, messages);
       addMessage({ content: result, role: "assistant" });
     } catch (error) {
       console.error("Error sending message to AI:", error);
