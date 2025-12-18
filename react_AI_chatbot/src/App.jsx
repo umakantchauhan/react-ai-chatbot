@@ -4,8 +4,8 @@ import { Chat } from "./components/Chat/Chat";
 import { Controls } from "./components/Controls/Controls";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const googleai = new GoogleGenerativeAI(import.meta.enc.VITE_GOOGLE_API_KEY);
-const gemini = googleai.getGenerativeModel({ model: "gemini-1.5-flash" });
+const googleai = new GoogleGenerativeAI(import.meta.env.VITE_GOOGLE_API_KEY);
+const gemini = googleai.getGenerativeModel({ model: "gemini-2.5-flash" });
 const chat = gemini.startChat({ history: [] });
 
 function App() {
