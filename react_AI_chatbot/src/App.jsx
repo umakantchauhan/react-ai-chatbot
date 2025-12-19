@@ -24,7 +24,7 @@ function App() {
     } catch (error) {
       console.error("Error sending message to AI:", error);
       addMessage({
-        content: "Sorry I couldn't process your request. Please try again",
+        content: "Sorry, I couldn't process your request. Please try again!",
         role: "system",
       });
     } finally {
